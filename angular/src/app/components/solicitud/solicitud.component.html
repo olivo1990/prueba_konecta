@@ -1,0 +1,75 @@
+<button mat-raised-button (click)="regresar()"><i class="fa fa-chevron-left"></i></button>
+<br><br>
+<!-- Formulario que guarda o actualiza los datos del empleado -->
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3 class="panel-title">Crear Solicitud</h3>
+            </div>
+            <form (ngSubmit)="crear()" #heroForm="ngForm">
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <label>Codigo :</label>
+                        <input type="text" name="codigo" class="form-control" required="required" placeholder="Codigo" title="Codigo" [(ngModel)]="solicitud.codigo" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Descripcion :</label>
+                        <textarea name="descripcion" class="form-control" required="required" placeholder="Descripcion" title="Descripcion" [(ngModel)]="solicitud.descripcion">
+
+                        </textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Resumen :</label>
+                        <input type="text" name="resumen" class="form-control" required="required" placeholder="Resumen" title="Resumen" [(ngModel)]="solicitud.resumen" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{empleado.nombre}}
+                    </div>
+                </div>
+                <div class="panel-footer text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div [hidden]="isLoading">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </th>
+                <td mat-cell *matCellDef="let solicitud"> {{solicitud.codigo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+                <td mat-cell *matCellDef="let solicitud"> {{solicitud.descripcion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="resumen">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Resumen </th>
+                <td mat-cell *matCellDef="let solicitud"> {{solicitud.resumen}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="empleado">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Empleado </th>
+                <td mat-cell *matCellDef="let solicitud"> {{solicitud.empleado.nombre}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <!-- El paginador de la tabla -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" [length]="100"></mat-paginator>
+    </div>
+</div>
+
+<!-- Si no encuentra resultado de la lista de empleados, se muestra este mensaje -->
+<div *ngIf="solicitudesBuscadas?.length == 0">
+    <p class="text-danger text-center">No se encontraron registros con los parametros de búsqueda</p>
+</div>

@@ -1,0 +1,14 @@
+/* Front Angular: se debe instalar el npm (node package manager) e instalar Angular CLI para la ejecución de los comandos. Si es para probar en el equipo local se deben ejecutar estos comandos en la carpeta raiz del proyecto de angular (angular) despues de descargar del repositorio. Version angular 8 */
+
+comando 1: npm install
+comando 2: ng serve -o o npm run ng serve -o
+
+/* Se debe abrir el navegador ejecutando la aplicación de angular para realizar las distintas pruebas. La url de los servicios apuntan al equipo local (localhost). El proyecto se encuentra en la carpeta angular */
+
+/////////////////////
+
+/* Back springboot framework java con Maven como gestor de dependencias: La carpeta de los servicios tiene como nombre springboot-service. Los servicios escuchan por el puerto 8080. Se debe compilar en el IDE Spring Tools de eclipse o si es de preferencia se puede ejecutar en visual studio code pero se debe instalar los plugins necesarios. Version java 1.8 */
+
+////////////////////
+
+/* Back gestor BD Mysql: se debe crear la base de datos prueba_konecta o importar el archivo sql de nombre prueba_konecta.sql que se encuentra dentro de la carpeta sql /*
